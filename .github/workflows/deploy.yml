@@ -40,7 +40,6 @@ jobs:
           NEW_TASK_DEF=$(aws ecs register-task-definition \
             --family $TASK_DEFINITION_FAMILY \
             --execution-role-arn $(echo $CURRENT_TASK_DEF | jq -r '.taskDefinition.executionRoleArn') \
-            --task-role-arn $(echo $CURRENT_TASK_DEF | jq -r '.taskDefinition.taskRoleArn') \
             --network-mode $(echo $CURRENT_TASK_DEF | jq -r '.taskDefinition.networkMode') \
             --container-definitions "$NEW_CONTAINER_DEF" \
             --requires-compatibilities "FARGATE" \
